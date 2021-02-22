@@ -22,6 +22,10 @@ function buildControls(props) {
                     disabledInfo = {props.disableInfo[ctrl.type]}
                 />
             ))}
+            <button 
+                className={styles.OrderButton}
+                disabledInfo={!props.purchasable}
+                onClick={props.ordered}>ORDER NOW</button>
         </div>
     )
 }
