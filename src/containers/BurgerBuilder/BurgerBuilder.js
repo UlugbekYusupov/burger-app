@@ -24,7 +24,8 @@ class BurgerBuilder extends Component {
         },
         totalPrice: 6,
         purchaseable: false,
-        purchasing: false
+        purchasing: false,
+        random: 0
     }
 
     purchaseHandler = () => {
@@ -76,10 +77,19 @@ class BurgerBuilder extends Component {
     purchaseContinueHandler = () => {
         alert('You Continue')
     }
+
+    randomOrderNumber = () => {
+        const min = 1;
+        const max = 100;
+        const rand = min + Math.random() * (max - min);
+        this.setState({ random: this.state.random + rand });
+      }
+    
     render() {
         const disabledInfo = {
             ...this.state.ingredients
         }
+
         for(let key in disabledInfo) {
             disabledInfo[key] = disabledInfo[key] <=0
         }
@@ -89,11 +99,14 @@ class BurgerBuilder extends Component {
                 <Modal show={this.state.purchasing} modalClosed={this.purchaseCancelHandler}>
                     <OrderSummary
                         ingredients={this.state.ingredients}
+                        price={this.state.totalPrice}
                         purchaseCanceled={this.purchaseCancelHandler}
                         purchaseContinued={this.purchaseContinueHandler}
-                    />
-                </Modal>
+                        random={this.randomOrderNumber}
+                /> </Modal>
+
                 <Burger ingridients={this.state.ingredients}/>
+                
                 <BuildControls 
                     ingredientAdded={this.addIngredientHandler}
                     ingredientRemoved={this.removeIngredientHandler}

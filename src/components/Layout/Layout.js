@@ -1,12 +1,12 @@
 import React from 'react'
 import Aux from '../../hoc/Aux';
 import styles from './Layout.module.css'
-import Burger from '../Burger/Burger'
+import ToolBar from '../Navigation/Toolbar/Toolbar'
 
 function layout(props) {
     return (
         <Aux>
-            <div>ToolBar, SideDrawer, Backdrop</div>
+            <ToolBar/>
             <main className={styles.Content}>
                 {props.children}
             </main>
