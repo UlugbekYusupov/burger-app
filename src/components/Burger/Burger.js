@@ -3,7 +3,6 @@ import styles from './Burger.module.css'
 import BurgerIngridient from './BurgerIngridients/BurgerIngridients';
 
 const burger = (props) => {
-
     let transformedIngridients = Object.keys(props.ingridients)
     .map(igKey => {
         return [...Array(props.ingridients[igKey])].map((_ , i) => {
